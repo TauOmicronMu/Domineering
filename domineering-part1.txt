@@ -1,0 +1,60 @@
+Domineering (Minor clarification added 9 March 2016)
+-----------
+
+You have learned how to play tic-tac-toe using game trees. Your task
+in this exercise is to play a game called domineering.
+
+* Two players take turns placing dominoes on an 8 x 8 chess board, or
+  more generally on an m x n board.
+  (So that the dominoes don't overlap, of course.)
+* The first player, H, places them horizontally.
+* The second player, V, places them vertically.
+* The first player unable to move loses.
+
+Alternatively and equivalently, H places two coins next to each other
+horizontally, in each move, and V places two coins next to each other
+vertically, in each move.
+
+Deadlines
+---------
+
+This last assignment is to be completed in 17 days, from Tuesday 8th
+March to Thursday 24th March.
+
+We will have two interim deadlines, Sunday 13th March and Sunday 20th
+March.
+
+Your task for the first interim deadline
+-----------------------------------------
+
+You have to produce three files
+
+  DomineeringMove.java     
+  DomineeringBoard.java     
+  CommandLineDomineering.java  
+
+corresponding to the given files
+
+  TTTMove.java     
+  TTTBoard.java     
+  CommandLineTicTacToe.java  
+
+for playing tic-tac-toe.
+
+The empty constructor of DomineeringBoard.java should construct a 4x4
+domineering board. There should also be a constructor that has
+dimensions m x n as parameters.
+
+Deliverables
+------------
+
+The three files in a zip file. A zip file including the above three
+files, plus any auxiliary file you use in your solution.
+
+They should compile with the unmodified given files in
+two-player-strategy.zip.
+
+In the following two deadlines, we will have more precise deliverables
+that can be marked automatically. For the moment, you should test this
+by playing manually with CommandLineDomineering.java, like in
+CommandLineTicTacToe.java

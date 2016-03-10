@@ -1,0 +1,57 @@
+The files
+
+   Board.java           <-- abstract files  
+   GameTree.java            (optimally play any game whatsoever)
+   Player.java  
+   MoveChannel.java  
+
+implement two-person games with outcomes in the type of
+integers. There is a maximizing player and minimizing player.
+
+This code is mainly an exercise in programming abstractly.
+
+The files
+
+   TTTBoard.java      <-- concrete files
+   TTTMove.java           (define a particular game)
+   CommandLineTicTacToe.java  
+
+implement tic-tac-toe as a concrete example.
+
+
+(1) The class Board, parametrized by a type Move of moves, defines
+    games abstractly.
+
+    A sample implementation (by extending Board) is TTTBoard, which
+    defines tic-tac-toe. This relies on the class TTTMoves for
+    tic-tac-toe moves.
+
+(2) The class Board offers two general methods for optimally playing
+    such abstract games, firstPlayer() and secondPlayer(), based on
+    game trees.
+
+    This relies on the interface MoveChannel for producing and
+    consuming moves without deciding in advance whether we are going
+    to play on the command line or in a GUI, for instance. For the
+    moment, a command line implementation is offered in the class
+    CommandLineTicTacToe.
+
+(3) The class GameTree defines game trees, but we choose to define the
+    construction of the game tree of a board (for any two person game)
+    in the class Board (using the minimax algorithm to compute the
+    optimalOutcomes and store them in the tree nodes).
+
+To test this, compile with
+
+               $ java -Xlint CommandLineTicTacToe.java
+
+which should give no errors or warning, and run with
+
+               $ javac -ea CommandLineTicTacToe
+
+Change main() to let the computer or the user start.
+
+The class CommandLineTicTacToe is simple minded and for testing
+purposes only, and will trigger exceptions or cause assertions to fail
+if the user provides incorrect input.
+
