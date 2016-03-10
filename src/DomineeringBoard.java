@@ -13,7 +13,22 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     
     public DomineeringBoard() {
         this.board = new DomineeringTile[4][4];
+        for(int i = 0; i < 4; i++) {
+        	for(int j = 0; j < 4; j++) {
+        		this.board[i][j] = new DomineeringTile();
+        	}
+        }
         this.movesPlayed = 0;
+    }
+    
+    public DomineeringBoard(int m, int n) {
+    	this.board = new DomineeringTile[m][n];
+    	for(int i = 0; i < m; i++) {
+    		for(int j = 0; j < n; j++) {
+    			this.board[i][j] = new DomineeringTile();
+    		}
+    	}
+    	this.movesPlayed = 0;
     }
     
     private DomineeringBoard(DomineeringTile[][] board, int movesPlayed) {
@@ -53,7 +68,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 			 * We can't play a move on the last row, so count back from there.
 			 * To avoid overlap, only check right (not left).
 			 */
-			for(int i = board.length - 1; i >= 0; i--) {
+			for(int i = board.length - 2; i >= 0; i--) {
 				for(int j = 0; j < board[i].length; j++) {
 					if(!this.board[i][j].taken) {
 						if(!this.board[i+1][j].taken) {
@@ -72,15 +87,30 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		return (player.equals(VERT)) ? moveNum : -moveNum;
 	}
 	
+	public String toString() {
+		String s = "";
+		  for(int i = 0; i < this.board.length; i++) {
+			  for(int j = 0; i < this.board[i].length; j++) {
+			      s += " " + this.board[i][j] + " " + "|";  	  
+			  }
+			  s += "\n" + "---------------------------------------------" + "\n";
+		  }
+	    return s;
+	}
+	
 	@Override
 	Board<DomineeringMove> play(DomineeringMove move) {
 		if(this.board[move.posA.column][move.posA.row].taken || this.board[move.posB.column][move.posB.row].taken) {
 			System.err.println("TRIED TO PLAY IN A SPACE THAT WAS ALREADY TAKEN!");
 			System.exit(1);
 		}
-		DomineeringTile[][] boardCopy = Arrays.copyOf(this.board);
-		boardCopy[move.posA.column][move.posA.row].flip();
-		boardCopy[move.posB.column][move.posB.row].flip();
+		
+		DomineeringTile[][] boardCopy = new DomineeringTile[this.board.length][this.board[0].length];
+		for(int i = 0; i < boardCopy.length; i++){
+			for(int j = 0; j < boardCopy[i].length; j++) {
+				boardCopy[i][j] = this.board[i][j];
+			}
+		}
 		return new DomineeringBoard(boardCopy, (this.movesPlayed + 1));
 	}  
 }

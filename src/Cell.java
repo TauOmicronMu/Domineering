@@ -7,4 +7,8 @@ public class Cell {
 		this.column = m;
 		this.row = n;
 	}
+	
+	public String toString() {
+		return "(" + column + "," + row + ")";
+	}
 }
