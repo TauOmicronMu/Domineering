@@ -2,7 +2,7 @@
 // Remember we require an immutable implementation.
 // So we can change things only after cloning.
 
-import java.util.*;
+import java.util.EnumSet;
 
 public class TTTBoard extends Board<TTTMove>{
   // Rename the players for this particular game:
