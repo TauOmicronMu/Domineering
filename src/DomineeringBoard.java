@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -67,24 +68,19 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	@Override
 	int value() {
 		Player player = this.nextPlayer();
-		/*
-		 * Return 1 for the vertical player and -1 for the horizontal player.
-		 */
-		int playNum = (player.equals(VERT)) ? 1 : -1;
-		return this.availableMoves().isEmpty() ? playNum : 0;
+		int moveNum = availableMoves().size();
+		return (player.equals(VERT)) ? moveNum : -moveNum;
 	}
+	
 	@Override
 	Board<DomineeringMove> play(DomineeringMove move) {
 		if(this.board[move.posA.column][move.posA.row].taken || this.board[move.posB.column][move.posB.row].taken) {
 			System.err.println("TRIED TO PLAY IN A SPACE THAT WAS ALREADY TAKEN!");
 			System.exit(1);
 		}
-		DomineeringTile[][] boardCopy = this.board;
+		DomineeringTile[][] boardCopy = Arrays.copyOf(this.board);
 		boardCopy[move.posA.column][move.posA.row].flip();
 		boardCopy[move.posB.column][move.posB.row].flip();
 		return new DomineeringBoard(boardCopy, (this.movesPlayed + 1));
-	}
- 
-    
-    
+	}  
 }
