@@ -35,7 +35,7 @@ public class CommandLineTicTacToe {
 
   public static void main(String [] args) {
     TTTBoard board = new TTTBoard();
-     // board.tree().firstPlayer(new CommandLineTTT());
+    board.tree().firstPlayer(new CommandLineTTT());
     board.tree().secondPlayer(new CommandLineTTT());
   }
 }

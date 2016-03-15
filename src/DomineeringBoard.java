@@ -42,7 +42,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     
 	@Override
 	Player nextPlayer() {
-	    return (this.movesPlayed % 2 == 0) ? VERT : HORIZ;
+	    return (this.movesPlayed % 2 == 0) ? HORIZ : VERT;
 	}
 	@Override
 	Set<DomineeringMove> availableMoves() {
@@ -98,7 +98,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		if(movesLeft) { 
 			return 0; //noone has won yet, so return 0.
 		}
-		return (player.equals(VERT) ? -1 : 1); //return -1 if VERT has won or 1 if HORIZ has won.
+		return (player.equals(VERT) ? 1 : -1); //return 1 if VERT has won or -1 if HORIZ has won.
 	}
 	
 	public String toString() {
@@ -116,6 +116,9 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	
 	@Override
 	Board<DomineeringMove> play(DomineeringMove move) {
+		String player = (nextPlayer().equals(VERT)) ? "Vert" : "Horiz";
+		System.out.println("-----------------------");
+		System.out.println(player + " makes a move.");
 		System.out.println("Tried to play : " + move);
 		if(this.board[move.posA.column][move.posA.row].taken || this.board[move.posB.column][move.posB.row].taken) {
 			System.err.println("TRIED TO PLAY IN A SPACE THAT WAS ALREADY TAKEN!");
