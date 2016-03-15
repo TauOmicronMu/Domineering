@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -5,8 +6,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     private static final Player VERT = Player.MAXIMIZER;
     private static final Player HORIZ = Player.MINIMIZER;
     
-    private final int defaultBoardWidth = 2;
-    private final int defaultBoardHeight = 2;
+    private final int defaultBoardWidth = 4;
+    private final int defaultBoardHeight = 4;
     
     private final DomineeringTile[][] board;
     private final int movesPlayed;
@@ -42,7 +43,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	}
 	@Override
 	Set<DomineeringMove> availableMoves() {
-		Set<DomineeringMove> moves = new HashSet<DomineeringMove>();
+		ArrayList<DomineeringMove> moveslist = new ArrayList<>();
+		Set<DomineeringMove> moves = new HashSet<DomineeringMove>(moveslist);
 		/*
 		 * Work out if we're the vertical or horizontal player.
 		 */
@@ -57,7 +59,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 				 for(int j = 1; j < board[i].length; j++) {
 					 if(!this.board[i][j].taken) {
 						 if(!this.board[i][j - 1].taken) {
-							 moves.add(new DomineeringMove(new Cell(i, j), new Cell(i, j - 1)));
+							 moveslist.add(new DomineeringMove(new Cell(i, j), new Cell(i, j - 1)));
 						 }
 					 }
 				 }
@@ -72,7 +74,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 				for(int j = 0; j < board[i].length; j++) {
 					if(!this.board[i][j].taken) {
 						if(!this.board[i+1][j].taken) {
-							moves.add(new DomineeringMove(new Cell(i, j), new Cell(i + 1, j)));
+							moveslist.add(new DomineeringMove(new Cell(i, j), new Cell(i + 1, j)));
 						}
 					}
 				}
@@ -89,11 +91,12 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	
 	public String toString() {
 		String s = "";
-		  for(int i = 0; i < this.board.length; i++) {
-			  for(int j = 0; i < this.board[i].length; j++) {
+		  for(int i = 0; i < this.defaultBoardWidth; i++) {
+			  s += "|";
+			  for(int j = 0; j < this.defaultBoardHeight; j++) {
 			      s += " " + this.board[i][j] + " " + "|";  	  
 			  }
-			  s += "\n" + "---------------------------------------------" + "\n";
+			  s += "\n" + "-----------------" + "\n";
 		  }
 	    return s;
 	}
