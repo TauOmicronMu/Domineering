@@ -1,20 +1,20 @@
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
-
-import com.sun.rowset.internal.Row;
 
 public class DomineeringBoard extends Board<DomineeringMove> {
     private static final Player VERT = Player.MAXIMIZER;
     private static final Player HORIZ = Player.MINIMIZER;
     
+    private final int defaultBoardWidth = 2;
+    private final int defaultBoardHeight = 2;
+    
     private final DomineeringTile[][] board;
     private final int movesPlayed;
     
     public DomineeringBoard() {
-        this.board = new DomineeringTile[4][4];
-        for(int i = 0; i < 4; i++) {
-        	for(int j = 0; j < 4; j++) {
+        this.board = new DomineeringTile[this.defaultBoardWidth][this.defaultBoardHeight];
+        for(int i = 0; i < this.defaultBoardWidth; i++) {
+        	for(int j = 0; j < this.defaultBoardHeight; j++) {
         		this.board[i][j] = new DomineeringTile();
         	}
         }
@@ -42,7 +42,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	}
 	@Override
 	Set<DomineeringMove> availableMoves() {
-		Set<DomineeringMove> moves = new TreeSet<DomineeringMove>();
+		Set<DomineeringMove> moves = new HashSet<DomineeringMove>();
 		/*
 		 * Work out if we're the vertical or horizontal player.
 		 */
