@@ -38,6 +38,8 @@ public class CommandLineDomineering {
     
 	public static void main(String[] args) {
 		DomineeringBoard board = new DomineeringBoard();
+		System.out.println(board);
+		board.tree().firstPlayer(new CommandLineDom());
 		board.tree().secondPlayer(new CommandLineDom());
 	}
 }
