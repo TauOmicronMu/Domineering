@@ -19,7 +19,8 @@ public class Cell {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Cell) {
+		if (obj == this) return true;
+		else if (obj instanceof Cell) {
 			Cell otherCell = (Cell) obj;
 			return otherCell.column = this.column && otherCell.row = this.row;
 		} else return false;
