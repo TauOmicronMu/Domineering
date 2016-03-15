@@ -18,7 +18,8 @@ public class DomineeringMove {
     
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof DomineeringMove) {
+        if (obj == this) return true;
+        else if (obj instanceof DomineeringMove) {
             DomineeringMove otherMove = (DomineeringMove) obj;
             return otherMove.posA.equals(this.posA) && otherMove.posB.equals(this.posB);
         } else return false;     
