@@ -52,7 +52,10 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		 * Work out if we're the vertical or horizontal player.
 		 */
 		Player player = this.nextPlayer();
-		if(player.equals(VERT)) {
+		
+		
+		//ANT: Changed Vert and Horiz around, you got the logic a little muddled here.
+		if(player.equals(HORIZ)) {
 		    /*
 		     * We can't play a move from the 1st row, so start checking
 		     * from the 2nd row. To ensure that there's no overlap, only
@@ -72,7 +75,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 				 }
 			 }
 		}
-		if(player.equals(HORIZ)) {
+		if(player.equals(VERT)) {
 			/*
 			 * We can't play a move on the last row, so count back from there.
 			 * To avoid overlap, only check right (not left).

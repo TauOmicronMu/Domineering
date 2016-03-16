@@ -19,11 +19,12 @@ public abstract class Board<Move> {
   // Constructs the game tree of the board using the minimax algorithm
   // (without alpha-beta pruning):
   public GameTree<Move> tree() {
-    if (availableMoves().isEmpty())
+    if (availableMoves().isEmpty())    
       return new GameTree<Move>
                     (this, 
                      new LinkedHashMap<Move,GameTree<Move>>(), 
                      value());
+    
     else
       return (nextPlayer() == Player.MAXIMIZER ? maxTree() : minTree()); 
   }
@@ -35,17 +36,21 @@ public abstract class Board<Move> {
     int optimalOutcome = Integer.MIN_VALUE;
     LinkedHashMap<Move,GameTree<Move>> children 
                  = new LinkedHashMap<Move,GameTree<Move>>(); 
-
-    for (Move m : availableMoves()) {
+    
+    //ANT: Added this so you can see why it's failing.
+    Set<Move> curAvailMoves = availableMoves();
+    for (Move m : curAvailMoves) {
+      System.out.println("Current available moves: " + curAvailMoves);
       GameTree<Move> subtree = play(m).tree();
       children.put(m,subtree);
       optimalOutcome = Math.max(optimalOutcome,subtree.optimalOutcome());
     }
-
+    
     return new GameTree<Move>(this,children,optimalOutcome); 
   }
 
   public GameTree<Move> minTree() {
+	System.out.println("AVAILABLE MOVES - HORIZONTAL: " + availableMoves());
     assert(!availableMoves().isEmpty());
 
     int optimalOutcome = Integer.MAX_VALUE;
@@ -58,6 +63,6 @@ public abstract class Board<Move> {
       optimalOutcome = Math.min(optimalOutcome,subtree.optimalOutcome());
     }
 
-    return new GameTree<Move>(this,children,optimalOutcome); 
+    return new GameTree<Move>(this,children,optimalOutcome);
   }
 }
