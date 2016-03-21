@@ -25,9 +25,6 @@ public class CommandLineDomineering {
 	    	Cell pos2 = new Cell(x, y-1);
 
 	    	DomineeringMove move = new DomineeringMove(pos1, pos2);
-	    	System.out.println(move);
-	    	
-	    	scanner.close();
 	    	
 	    	return move;
 	    }
@@ -47,7 +44,6 @@ public class CommandLineDomineering {
     
 	public static void main(String[] args) {
 		DomineeringBoard board = new DomineeringBoard();
-		System.out.println(board);
 		//board.tree().firstPlayer(new CommandLineDom());
 		board.tree().secondPlayer(new CommandLineDom());
 	}

@@ -89,7 +89,7 @@ public class GameTree<Move> {
     else {
       Move m = c.getMove();
       assert(children.containsKey(m));
-      System.out.println(children);
+      //System.out.println(children);
       children.get(m).firstPlayer(c);
     }
   }

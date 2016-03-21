@@ -35,6 +35,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     private DomineeringBoard(DomineeringTile[][] board, int movesPlayed) {
     	this.board = board;
     	this.movesPlayed = movesPlayed;
+    	//System.out.println(toString());
     }
     
 	@Override
@@ -46,7 +47,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		ArrayList<DomineeringMove> moveslist = new ArrayList<>();
 		
 		/*
-		 * Work out if we're the vertical or horizontal player.
+		 * Work out if we're the vertical or 		System.out.println(boardCopy);horizontal player.
 		 */
 		Player player = this.nextPlayer();
 		
@@ -98,7 +99,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	public String toString() {
 		String s = "";
 		  s += "\n";
-		  for(int j = 0; j < this.board.length; j++) s += "-----";
+		  s += "-";
+		  for(int j = 0; j < this.board.length; j++) s += "----";
 		  s += "\n";
 		  for(int i = 0; i < this.board.length; i++) {
 			  s += "|";
@@ -106,7 +108,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 			      s += " " + this.board[i][j] + " " + "|";  	  
 			  }
 			  s += "\n";
-			  for(int j = 0; j < this.board.length; j++) s += "-----";
+			  for(int j = 0; j < this.board.length; j++) s += "----";
+			  s += "-";
 			  s += "\n";
 		  }
 	    return s;
@@ -122,10 +125,27 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 			}
 		}
 		
+		Player player = this.nextPlayer();
+		
 		int movesCopy = this.movesPlayed;
 		movesCopy++;
+		
 		boardCopy[move.posA.column][move.posA.row].flip();
+		boardCopy[move.posA.column][move.posA.row].owner = player;
 		boardCopy[move.posB.column][move.posB.row].flip();
+		boardCopy[move.posB.column][move.posB.row].owner = player;
+		
 		return new DomineeringBoard(boardCopy, movesCopy);
 	}  
+	
+	public DomineeringBoard clear() {
+		DomineeringTile[][] boardCopy = new DomineeringTile[this.board.length][this.board[0].length];
+		for(int i = 0; i < boardCopy.length; i++) {
+			for(int j = 0; j < boardCopy[0].length; j++) {
+				boardCopy[i][j] = this.board[i][j];
+				boardCopy[i][j].taken = false;
+			}
+		}
+		return new DomineeringBoard(boardCopy, this.movesPlayed);
+	}
 }
