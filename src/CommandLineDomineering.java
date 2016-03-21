@@ -1,25 +1,23 @@
 import java.util.Scanner;
 
 public class CommandLineDomineering {
-
+	
 	private static class CommandLineDom implements MoveChannel<DomineeringMove> {
 		
 		public DomineeringMove getMove() {
 			Scanner scanner = new Scanner(System.in);
-			System.out.print("Enter your move (x1,y1,x2,y2): ");
+			System.out.print("Enter your move (x,y): ");
 	    	String input = scanner.nextLine();
 	    	String[] splitInput = input.split(",");
-	    	if(splitInput.length != 4) {
+	    	if(splitInput.length != 2) {
 	    		System.err.println("Your input was wrong!");
 	    		System.exit(1);
 	    	}
-	    	int x1 = Integer.parseInt(splitInput[0]);
-	    	int y1 = Integer.parseInt(splitInput[1]);
-	    	int x2 = Integer.parseInt(splitInput[2]);
-	    	int y2 = Integer.parseInt(splitInput[3]);
+	    	int x = Integer.parseInt(splitInput[0]);
+	    	int y = Integer.parseInt(splitInput[1]);
 	    	
-	    	Cell pos1 = new Cell(x1, y1);
-	    	Cell pos2 = new Cell(x2, y2);
+	    	Cell pos1 = new Cell(x, y);
+	    	Cell pos2 = new Cell(x+1 , y);
 	    	
 	    	DomineeringMove move = new DomineeringMove(pos1, pos2);
 	    	

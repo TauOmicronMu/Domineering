@@ -20,7 +20,6 @@ public class DomineeringBoard extends Board<DomineeringMove> {
         	}
         }
         this.movesPlayed = 0;
-        //System.out.println(board);
     }
     
     public DomineeringBoard(int m, int n) {
@@ -31,13 +30,11 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     		}
     	}
     	this.movesPlayed = 0;
-    	//System.out.println(board);
     }
     
     private DomineeringBoard(DomineeringTile[][] board, int movesPlayed) {
     	this.board = board;
     	this.movesPlayed = movesPlayed;
-    	System.out.println(toString());
     }
     
 	@Override
@@ -86,11 +83,6 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		}
 		Set<DomineeringMove> moves = new HashSet<DomineeringMove>(moveslist);
 		
-		/*if(moveslist.size() == 0) {
-			String winningPlayer = (this.nextPlayer().equals(VERT)) ? "HORIZ" : "VERT" ;
-			System.out.println(winningPlayer + " Wins!");
-			System.exit(0);
-		}*/
 		return moves;
 	}
 	@Override
@@ -121,15 +113,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	}
 	
 	@Override
-	Board<DomineeringMove> play(DomineeringMove move) {
-		String player = (nextPlayer().equals(VERT)) ? "Vert" : "Horiz";
-		System.out.println("-----------------------");
-		System.out.println(player + " makes a move.");
-		System.out.println("Tried to play : " + move);
-		if(this.board[move.posA.column][move.posA.row].taken || this.board[move.posB.column][move.posB.row].taken) {
-			System.err.println("TRIED TO PLAY IN A SPACE THAT WAS ALREADY TAKEN!");
-			System.exit(1);
-		}
+	Board<DomineeringMove> play(DomineeringMove move) { 
 		
 		DomineeringTile[][] boardCopy = new DomineeringTile[this.board.length][this.board[0].length];
 		for(int i = 0; i < boardCopy.length; i++){

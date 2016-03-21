@@ -37,10 +37,8 @@ public abstract class Board<Move> {
     LinkedHashMap<Move,GameTree<Move>> children 
                  = new LinkedHashMap<Move,GameTree<Move>>(); 
     
-    //ANT: Added this so you can see why it's failing.
     Set<Move> curAvailMoves = availableMoves();
     for (Move m : curAvailMoves) {
-      System.out.println("Current available moves: " + curAvailMoves);
       GameTree<Move> subtree = play(m).tree();
       children.put(m,subtree);
       optimalOutcome = Math.max(optimalOutcome,subtree.optimalOutcome());
@@ -50,7 +48,6 @@ public abstract class Board<Move> {
   }
 
   public GameTree<Move> minTree() {
-	System.out.println("AVAILABLE MOVES - HORIZONTAL: " + availableMoves());
     assert(!availableMoves().isEmpty());
 
     int optimalOutcome = Integer.MAX_VALUE;
