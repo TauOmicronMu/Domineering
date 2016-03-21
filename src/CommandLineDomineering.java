@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 public class CommandLineDomineering {
 	
 	private static class CommandLineDom implements MoveChannel<DomineeringMove> {
@@ -13,13 +15,17 @@ public class CommandLineDomineering {
 	    		System.err.println("Your input was wrong!");
 	    		System.exit(1);
 	    	}
+	    	
 	    	int x = Integer.parseInt(splitInput[0]);
+
 	    	int y = Integer.parseInt(splitInput[1]);
-	    	
+
 	    	Cell pos1 = new Cell(x, y);
-	    	Cell pos2 = new Cell(x+1 , y);
-	    	
+
+	    	Cell pos2 = new Cell(x, y-1);
+
 	    	DomineeringMove move = new DomineeringMove(pos1, pos2);
+	    	System.out.println(move);
 	    	
 	    	scanner.close();
 	    	
