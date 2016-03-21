@@ -6,8 +6,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     private static final Player VERT = Player.MAXIMIZER;
     private static final Player HORIZ = Player.MINIMIZER;
     
-    private final int defaultBoardWidth = 4;
-    private final int defaultBoardHeight = 4;
+    private final int defaultBoardWidth = 3;
+    private final int defaultBoardHeight = 3;
     
     private final DomineeringTile[][] board;
     private final int movesPlayed;
@@ -46,30 +46,24 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	}
 	@Override
 	Set<DomineeringMove> availableMoves() {
-		////System.out.println("--------------\navailableMoves()\n--------------");
 		ArrayList<DomineeringMove> moveslist = new ArrayList<>();
+		
 		/*
 		 * Work out if we're the vertical or horizontal player.
 		 */
 		Player player = this.nextPlayer();
 		
-		
-		//ANT: Changed Vert and Horiz around, you got the logic a little muddled here.
 		if(player.equals(HORIZ)) {
 		    /*
 		     * We can't play a move from the 1st row, so start checking
 		     * from the 2nd row. To ensure that there's no overlap, only
 		     * check up (not down).
 		     */
-			////System.out.println("Player : VERT");
 			 for(int i = 0; i < board.length; i++) {
 				 for(int j = 1; j < board[i].length; j++) {
 					 if(!this.board[i][j].taken) {
-						 ////System.out.println("position (" + i + "," + j + ") was not taken");
 						 if(!this.board[i][j - 1].taken) {
-							 ////System.out.println("position (" + i + "," + (j-1) + ") was not taken");
 							 moveslist.add(new DomineeringMove(new Cell(i, j), new Cell(i, j - 1)));
-							 ////System.out.println("Added a move.");
 						 }
 					 }
 				 }
@@ -80,7 +74,6 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 			 * We can't play a move on the last row, so count back from there.
 			 * To avoid overlap, only check right (not left).
 			 */
-			////System.out.println("Player : HORIZ");
 			for(int i = board.length - 2; i >= 0; i--) {
 				for(int j = 0; j < board[i].length; j++) {
 					if(!this.board[i][j].taken) {
@@ -92,6 +85,12 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 			}
 		}
 		Set<DomineeringMove> moves = new HashSet<DomineeringMove>(moveslist);
+		
+		/*if(moveslist.size() == 0) {
+			String winningPlayer = (this.nextPlayer().equals(VERT)) ? "HORIZ" : "VERT" ;
+			System.out.println(winningPlayer + " Wins!");
+			System.exit(0);
+		}*/
 		return moves;
 	}
 	@Override
@@ -106,13 +105,17 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	
 	public String toString() {
 		String s = "";
-		s += "\n" + "-----------------" + "\n";
+		  s += "\n";
+		  for(int j = 0; j < this.board.length; j++) s += "-----";
+		  s += "\n";
 		  for(int i = 0; i < this.board.length; i++) {
 			  s += "|";
 			  for(int j = 0; j < this.board[i].length; j++) {
 			      s += " " + this.board[i][j] + " " + "|";  	  
 			  }
-			  s += "\n" + "-----------------" + "\n";
+			  s += "\n";
+			  for(int j = 0; j < this.board.length; j++) s += "-----";
+			  s += "\n";
 		  }
 	    return s;
 	}
@@ -134,8 +137,11 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 				boardCopy[i][j] = this.board[i][j];
 			}
 		}
+		
+		int movesCopy = this.movesPlayed;
+		movesCopy++;
 		boardCopy[move.posA.column][move.posA.row].flip();
 		boardCopy[move.posB.column][move.posB.row].flip();
-		return new DomineeringBoard(boardCopy, (this.movesPlayed + 1));
+		return new DomineeringBoard(boardCopy, movesCopy);
 	}  
 }
