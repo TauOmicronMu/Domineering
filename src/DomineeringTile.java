@@ -1,4 +1,6 @@
-
+/*
+ * OLD CLASS.
+ */
 public class DomineeringTile {
     private static final Player VERT = Player.MAXIMIZER;
     
@@ -8,8 +10,8 @@ public class DomineeringTile {
     public void flip() { this.taken = !this.taken; }
     
     public String toString() {
-    	
-    	return (this.taken) ? 
+
+    	return (this.taken) ?
     		       (this.owner.equals(VERT) ? "X" : "O") 
     				    : " ";
     }

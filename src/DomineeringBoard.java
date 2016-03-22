@@ -8,7 +8,9 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     
     private final int defaultBoardWidth = 3;
     private final int defaultBoardHeight = 3;
-    
+
+
+	//TODO : Use an array of Players instead.
     private final DomineeringTile[][] board;
     private final int movesPlayed;
     
@@ -131,9 +133,9 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		movesCopy++;
 		
 		boardCopy[move.posA.column][move.posA.row].flip();
-		boardCopy[move.posA.column][move.posA.row].owner = player;
+		//boardCopy[move.posA.column][move.posA.row].owner = player;
 		boardCopy[move.posB.column][move.posB.row].flip();
-		boardCopy[move.posB.column][move.posB.row].owner = player;
+		//boardCopy[move.posB.column][move.posB.row].owner = player;
 		
 		return new DomineeringBoard(boardCopy, movesCopy);
 	}  
