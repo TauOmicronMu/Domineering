@@ -6,35 +6,36 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     private static final Player VERT = Player.MAXIMIZER;
     private static final Player HORIZ = Player.MINIMIZER;
     
-    private final int defaultBoardWidth = 3;
-    private final int defaultBoardHeight = 3;
+    private final int defaultBoardWidth = 4;
+    private final int defaultBoardHeight = 4;
 
 
 	//TODO : Use an array of Players instead.
-    private final DomineeringTile[][] board;
+    //private final DomineeringTile[][] board;
+	private final Player[][] board;
     private final int movesPlayed;
     
     public DomineeringBoard() {
-        this.board = new DomineeringTile[this.defaultBoardWidth][this.defaultBoardHeight];
+        this.board = new Player[this.defaultBoardWidth][this.defaultBoardHeight];
         for(int i = 0; i < this.defaultBoardWidth; i++) {
         	for(int j = 0; j < this.defaultBoardHeight; j++) {
-        		this.board[i][j] = new DomineeringTile();
+        		this.board[i][j] = Player.EMPTY;
         	}
         }
         this.movesPlayed = 0;
     }
     
     public DomineeringBoard(int m, int n) {
-    	this.board = new DomineeringTile[m][n];
+    	this.board = new Player[m][n];
     	for(int i = 0; i < m; i++) {
     		for(int j = 0; j < n; j++) {
-    			this.board[i][j] = new DomineeringTile();
+    			this.board[i][j] = Player.EMPTY;
     		}
     	}
     	this.movesPlayed = 0;
     }
     
-    private DomineeringBoard(DomineeringTile[][] board, int movesPlayed) {
+    private DomineeringBoard(Player[][] board, int movesPlayed) {
     	this.board = board;
     	this.movesPlayed = movesPlayed;
     	//System.out.println(toString());
@@ -61,8 +62,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		     */
 			 for(int i = 0; i < board.length; i++) {
 				 for(int j = 1; j < board[i].length; j++) {
-					 if(!this.board[i][j].taken) {
-						 if(!this.board[i][j - 1].taken) {
+					 if(!this.board[i][j].equals(Player.EMPTY)) {
+						 if(!this.board[i][j - 1].equals(Player.EMPTY)) {
 							 moveslist.add(new DomineeringMove(new Cell(i, j), new Cell(i, j - 1)));
 						 }
 					 }
@@ -76,15 +77,15 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 			 */
 			for(int i = board.length - 2; i >= 0; i--) {
 				for(int j = 0; j < board[i].length; j++) {
-					if(!this.board[i][j].taken) {
-						if(!this.board[i+1][j].taken) {
+					if(!this.board[i][j].equals(Player.EMPTY)) {
+						if(!this.board[i+1][j].equals(Player.EMPTY)) {
 							moveslist.add(new DomineeringMove(new Cell(i, j), new Cell(i + 1, j)));
 						}
 					}
 				}
 			}
 		}
-		Set<DomineeringMove> moves = new HashSet<DomineeringMove>(moveslist);
+		Set<DomineeringMove> moves = new HashSet<>(moveslist);
 		
 		return moves;
 	}
@@ -107,7 +108,10 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		  for(int i = 0; i < this.board.length; i++) {
 			  s += "|";
 			  for(int j = 0; j < this.board[i].length; j++) {
-			      s += " " + this.board[i][j] + " " + "|";  	  
+			      s += " ";
+				  s += (this.board[i][j]).equals(Player.EMPTY) ? "" :
+						  (this.board[i][j].equals(Player.MAXIMIZER) ? "X" : "O");
+				  s += " " + "|";
 			  }
 			  s += "\n";
 			  for(int j = 0; j < this.board.length; j++) s += "----";
@@ -120,7 +124,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 	@Override
 	Board<DomineeringMove> play(DomineeringMove move) { 
 		
-		DomineeringTile[][] boardCopy = new DomineeringTile[this.board.length][this.board[0].length];
+		Player[][] boardCopy = new Player[this.board.length][this.board[0].length];
 		for(int i = 0; i < boardCopy.length; i++){
 			for(int j = 0; j < boardCopy[i].length; j++) {
 				boardCopy[i][j] = this.board[i][j];
@@ -132,20 +136,25 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 		int movesCopy = this.movesPlayed;
 		movesCopy++;
 		
-		boardCopy[move.posA.column][move.posA.row].flip();
+		//boardCopy[move.posA.column][move.posA.row].flip();
 		//boardCopy[move.posA.column][move.posA.row].owner = player;
-		boardCopy[move.posB.column][move.posB.row].flip();
+		//boardCopy[move.posB.column][move.posB.row].flip();
 		//boardCopy[move.posB.column][move.posB.row].owner = player;
-		
+
+		boardCopy[move.posA.column][move.posA.row] = player;
+		boardCopy[move.posB.column][move.posB.row] = player;
+
+		System.out.println(boardCopy);
+
 		return new DomineeringBoard(boardCopy, movesCopy);
 	}  
 	
 	public DomineeringBoard clear() {
-		DomineeringTile[][] boardCopy = new DomineeringTile[this.board.length][this.board[0].length];
+		Player[][] boardCopy = new Player[this.board.length][this.board[0].length];
 		for(int i = 0; i < boardCopy.length; i++) {
 			for(int j = 0; j < boardCopy[0].length; j++) {
 				boardCopy[i][j] = this.board[i][j];
-				boardCopy[i][j].taken = false;
+				//boardCopy[i][j].taken = false;
 			}
 		}
 		return new DomineeringBoard(boardCopy, this.movesPlayed);
