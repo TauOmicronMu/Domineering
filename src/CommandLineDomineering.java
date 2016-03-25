@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
+import com.sun.org.apache.xerces.internal.util.DOMInputSource;
 import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 public class CommandLineDomineering {
-	
+
 	private static class CommandLineDom implements MoveChannel<DomineeringMove> {
-		
+
 		public DomineeringMove getMove() {
 			Scanner scanner = new Scanner(System.in);
 			System.out.print("Enter your move (x,y): ");
@@ -20,14 +21,14 @@ public class CommandLineDomineering {
 
 	    	int y = Integer.parseInt(splitInput[1]);
 
-	    	DomineeringMove move = new DomineeringMove(x, y, Player.MAXIMIZER);
+	    	DomineeringMove move = new DomineeringMove(y, x, Player.MAXIMIZER);
 	    	
 	    	return move;
 	    }
 		
 	    public void giveMove(DomineeringMove move) {
 	    	System.out.println("I play " + move);
-	    }
+		}
 	    
 	    public void comment(String msg) {
 	    	System.out.println(msg);
@@ -38,8 +39,8 @@ public class CommandLineDomineering {
 	    }
 	}
     
-	public static void main(String[] args) {
-		DomineeringBoard board = new DomineeringBoard();
+    public static void main(String[] args) {
+        DomineeringBoard board = new DomineeringBoard();
 		//board.tree().firstPlayer(new CommandLineDom());
 		board.tree().secondPlayer(new CommandLineDom());
 	}

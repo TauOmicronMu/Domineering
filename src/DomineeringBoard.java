@@ -73,8 +73,6 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     public DomineeringBoard(Player[][] board, int movesPlayed) {
         this.board = board;
         this.movesPlayed = movesPlayed;
-
-        System.out.println(toString());
     }
 
 
@@ -104,13 +102,13 @@ public class DomineeringBoard extends Board<DomineeringMove> {
      * Maximiser (V) :
      * ---------------
      * For the vertical player, start on the 2nd (i = 1) row, and
-     * check all pairs of cells: (i, j), (i, j-1) to see if
+     * check all pairs of cells: (i, j), (i-1, j) to see if
      * they are both empty. If they are, add them to the set.
      *
      * Minimiser (H) :
      * ---------------
      * For the horizontal player, start on the (n-1)th column, and
-     * check all pairs of cells: (i, j), (i+1, j) to see if
+     * check all pairs of cells: (i, j), (i, j+1) to see if
      * they are both empty. If they are, add them to the set.
      */
     public Set<DomineeringMove> availableMoves() {
@@ -118,18 +116,18 @@ public class DomineeringBoard extends Board<DomineeringMove> {
         ArrayList<DomineeringMove> moves = new ArrayList<>();
         switch(player) {
             case MAXIMIZER:
-                for(int i = 0; i < this.board.length; i++) {
-                    for (int j = 1; j < this.board[i].length; j++) {
-                        if(this.board[i][j].equals(Player.EMPTY) && this.board[i][j-1].equals(Player.EMPTY)) {
+                for(int i = 1; i < this.board.length; i++) {
+                    for (int j = 0; j < this.board[i].length; j++) {
+                        if(this.board[i][j].equals(Player.EMPTY) && this.board[i-1][j].equals(Player.EMPTY)) {
                             moves.add(new DomineeringMove(i, j, player));
                         }
                     }
                 }
                 break;
             case MINIMIZER:
-                for(int i = (this.board.length -1); i >= 0; i--) {
-                    for(int j = 0; j < this.board[i].length; j++) {
-                        if(this.board[i][j].equals(Player.EMPTY) && this.board[i+1][j].equals(Player.EMPTY)) {
+                for(int i = (this.board.length - 2); i < this.board.length; i++) {
+                    for(int j = (this.board.length - 2); j >= 0; j--) {
+                        if(this.board[i][j].equals(Player.EMPTY) && this.board[i][j+1].equals(Player.EMPTY)) {
                             moves.add(new DomineeringMove(i, j, player));
                         }
                     }
@@ -177,15 +175,16 @@ public class DomineeringBoard extends Board<DomineeringMove> {
         switch(player) {
             case MAXIMIZER:
                 boardCopy[move.x][move.y] = V;
-                boardCopy[move.x][move.y-1] = V;
+                boardCopy[move.x-1][move.y] = V;
                 break;
             case MINIMIZER:
                 boardCopy[move.x][move.y] = H;
-                boardCopy[move.x+1][move.y] = H;
+                boardCopy[move.x][move.y+1] = H;
                 break;
         }
 
         int movesCopy = this.movesPlayed;
+        movesCopy++;
 
         return new DomineeringBoard(boardCopy, movesCopy);
     }
@@ -204,7 +203,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
             s += "|";
             for(int j = 0; j < this.board[i].length; j++) {
                 s += " ";
-                s += (this.board[i][j]).equals(Player.EMPTY) ? "" :
+                s += (this.board[i][j]).equals(Player.EMPTY) ? " " :
                         (this.board[i][j].equals(Player.MAXIMIZER) ? "X" : "O");
                 s += " " + "|";
             }

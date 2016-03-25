@@ -62,6 +62,7 @@ public class GameTree<Move> {
 
     if (isLeaf()) {
       assert(optimalOutcome == board.value());
+        c.comment(board.toString());
       c.end(board.value());
     } 
     else {
@@ -80,10 +81,11 @@ public class GameTree<Move> {
 
   // Plays second using this tree:
   public void secondPlayer(MoveChannel<Move> c) {
-    //c.comment(board + "\nThe optimal outcome is " + optimalOutcome);
+    c.comment(board + "\nThe optimal outcome is " + optimalOutcome);
 
     if (isLeaf()) {
       assert(optimalOutcome == board.value());
+        c.comment(board.toString());
       c.end(board.value());
     } 
     else {
