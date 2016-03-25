@@ -20,11 +20,7 @@ public class CommandLineDomineering {
 
 	    	int y = Integer.parseInt(splitInput[1]);
 
-	    	Cell pos1 = new Cell(x, y);
-
-	    	Cell pos2 = new Cell(x, y-1);
-
-	    	DomineeringMove move = new DomineeringMove(pos1, pos2);
+	    	DomineeringMove move = new DomineeringMove(x, y, Player.MAXIMIZER);
 	    	
 	    	return move;
 	    }
