@@ -63,21 +63,33 @@ public class BlackBoxDomineering {
     private static class CommandLineDom implements MoveChannel<DomineeringMove> {
 
         public DomineeringMove getMove() {
-            //Do nothing - we don't want input from a human player.
-            //#WatDoIDoHere :'(
-            return null;
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            String[] splitInput = input.split(",");
+            if(splitInput.length != 2) {
+                System.err.println("Your input was wrong!");
+                System.exit(1);
+            }
+
+            int x = Integer.parseInt(splitInput[0]);
+
+            int y = Integer.parseInt(splitInput[1]);
+
+            DomineeringMove move = new DomineeringMove(y, x, Player.MAXIMIZER);
+
+            return move;
         }
 
         public void giveMove(DomineeringMove move) {
-            System.out.println("I play " + move);
+            System.err.println("I play " + move);
         }
 
         public void comment(String msg) {
-            System.out.println(msg);
+            System.err.println(msg);
         }
 
         public void end(int value) {
-            System.out.println("Game over. The result is " + value);
+            System.err.println("Game over. The result is " + value);
         }
     }
 
