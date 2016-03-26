@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Created by tom on 25/03/16.
  */
@@ -57,9 +59,49 @@ public class BlackBoxDomineering {
      output other than System.err.
 
      */
+
+    private static class CommandLineDom implements MoveChannel<DomineeringMove> {
+
+        public DomineeringMove getMove() {
+            //Do nothing - we don't want input from a human player.
+            //#WatDoIDoHere :'(
+            return null;
+        }
+
+        public void giveMove(DomineeringMove move) {
+            System.out.println("I play " + move);
+        }
+
+        public void comment(String msg) {
+            System.out.println(msg);
+        }
+
+        public void end(int value) {
+            System.out.println("Game over. The result is " + value);
+        }
+    }
+
     public static void main(String[] args) {
 
         assert(args.length == 4);
 
+        String firstOrSecond = args[0];
+        String vertOrHoriz = args[1];
+        int m = Integer.parseInt(args[2]);
+        int n = Integer.parseInt(args[3]);
+
+        DomineeringBoard board = new DomineeringBoard(m,n);
+
+        switch(firstOrSecond) {
+            case "first" :
+                board.tree().firstPlayer(new CommandLineDom());
+                break;
+            case "second" :
+                board.tree().secondPlayer(new CommandLineDom());
+                break;
+            default :
+                System.err.println("1st arg was wrong!");
+                System.exit(1);
+        }
     }
 }

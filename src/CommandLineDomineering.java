@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-import com.sun.org.apache.xerces.internal.util.DOMInputSource;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 public class CommandLineDomineering {
 
 	private static class CommandLineDom implements MoveChannel<DomineeringMove> {
