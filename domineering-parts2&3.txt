@@ -1,0 +1,166 @@
+Domineering, continued
+----------------------
+
+A submission for Part 1 that passes some basic tests will get 40%.  If
+you haven't completed Part 1 by the deadline, you should keep working
+on it until you get it right, as it is needed for Parts 2 and 3. You
+should nevertheless submit your work for Part 1 in the deadline, even
+if it is not complete or working - you are allowed to resubmit it in
+the other deadlines.
+
+Black-box behaviour
+-------------------
+
+A submission that passes this part will get 50%.
+
+You are required to implement a class 
+
+   BlackBoxDomineering (with B,B,D capitalized)
+
+that has a main method as follows
+
+ - It takes EXACTLY four command line arguments (and you should
+   have an assertion for the number of command line arguments).
+
+ - The first argument is either "first" or "second", indicating
+   whether your black box plays first or second.
+
+ - The second argument is either "vertical" or "horizontal",
+   indicating whether your black box is the player H or the player V.
+
+   (After discussion with the students on 11-12 of March, we are
+   keeping this specification, but we promise to use your black box
+   with the combinations first-H and second-V only, and hence you
+   don't need to implement the combinations first-V and second-H.)
+
+ - The third argument is the width of the board.
+
+ - The fourth argument is the height of the board.
+
+ - The main method then starts to play as the appropriate player as follows.
+
+ - It should print what we tell you below, and nothing else, because we
+   are going to parse the output and give you marks based on that.
+
+ - Anything you want to print for your own benefit, such as debugging,
+   should be printed to "System.err" rather than "System.out".
+
+ - Your program will read opponent moves from System.in, and write its
+   moves to System.out. It is important here that the reading and
+   writing is WITHOUT BUFFERING. After writing each move, you should
+   flush() the output.
+
+ - Each move in the input or the output is terminated by a new line.
+
+ - If your opponent plays an invalid move, you should exit with
+   System.exit(1). You may print a message in System.err, but
+   definitely not System.out.
+
+ - A move is a pair of numbers separated by comma, such as "3,5", in
+   ZERO-BASED coordinates.
+
+ - A vertical move x,y covers the positions x,y and x,(y+1).
+
+ - A horizontal move x,y covers the positions x,y and (x+1),y.
+
+ - We emphasize again your program should NOT PRINT ANYTHING ELSE to
+   standard output. Prompts or boards or debugging output or error
+   messages MUST go to System.err.
+
+ - When the game has finished because there are no available moves for
+   the next player, your program should end silently without error or
+   output other than System.err.
+
+We have a program which does precisely that. We will mark your program
+by making it play with our program, using a third program that knows
+how to make two black-box players play. We repeat that flush() is
+important for this third program to work. With no flushes, we get a
+deadlock, and the marking will finish by timeout without any marks
+awarded.
+
+
+Bigger boards
+-------------
+
+Marks 50%-100%.
+
+A drawback of our GameTree implementation is that the maximum board
+we can currently cope with is 4x4 or so, depending on how Boards are
+implemented, because the trees grow very big after that. Another
+drawback is that it is not very fast, even for smaller trees.
+
+We want you to improve this, with classes 
+
+   GameTree2 
+   Board2
+
+based on GameTree and Board, and a corresponding
+
+   BlackBoxDomineering2
+
+adapting BlackBoxDomineering to this situation.
+  
+Here are some suggestions:
+
+ - Better data structures for your board (e.g. our bst's).
+ - Laziness and alpha-beta pruning for minimax.
+ - Heuristic pruning.
+ - Parallel processing with threads.
+ - Any technique you find or come up with.
+ 
+We will test your black-box player, in a UG04 lab machine,
+
+ - against our optimal player   (for small boards)
+ - against our random player    (for bigger boards)
+ - against our heuristic player (for bigger boards)
+
+We will
+
+ - measure time
+ - measure proportion of wins against the random player
+ - measure proportion of wins against the heuristic player
+ - measure the biggest size you can cope with against the optimal and
+   the heuristic players.
+
+We will advertise more precise numerical details later.
+
+Being able to cope with a 4x5 board against an optimal player in
+reasonable time will give you 65%. This can, for example, be easily
+achieved by having a reasonably good board and laziness for the tree.
+ 
+Deliverables
+------------
+
+Files
+
+  DomineeringMove
+  DomineeringBoard    
+  CommandLineDomineering
+  BlackBoxDomineering  (with a main method)
+  GameTree2
+  Board2
+  BlackBoxDomineering2 (with a main method)
+  <Any additional files you decide to use for building your solution>
+
+The files GameTree, Board, Move, and MoveChannel, if present in your
+submission, will be automatically replaced by our original files, and
+so there won't be any point in you changing them. THEREFORE, make sure
+your submission compiles with OUR versions of those files.
+
+  A - Your final submission should compile with a Java file that we
+      will provide to you (and our original files GameTree, Move,
+      Board and MoveChannel).
+
+  B - Your final submission should pass our format check with a script
+      we will provide to you.
+
+  C - Only after passing (A) and (B) are you supposed to submit on
+      Canvas in the last deadline.
+
+Deadlines
+---------
+
+  13 March - code review - submit what you have by then
+  20 March - code review - submit what you have by then
+  24 March - final submission of all code for marking
+

@@ -9,8 +9,8 @@ import java.util.Set;
  */
 public class DomineeringBoard extends Board<DomineeringMove> {
 
-    private final Player V = Player.MAXIMIZER;
-    private final Player H = Player.MINIMIZER;
+    private final Player H = Player.MAXIMIZER;
+    private final Player V = Player.MINIMIZER;
 
     private final Player[][] board;
     private final int movesPlayed;
@@ -125,7 +125,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
                 }
                 break;
             case MINIMIZER:
-                for(int i = (this.board.length - 2); i < this.board.length; i++) {
+                for(int i = 0; i < this.board.length; i++) {
                     for(int j = (this.board.length - 2); j >= 0; j--) {
                         if(this.board[i][j].equals(Player.EMPTY) && this.board[i][j+1].equals(Player.EMPTY)) {
                             moves.add(new DomineeringMove(i, j, player));
