@@ -16,7 +16,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     private final int movesPlayed;
 
     private final int defaultWidth = 4;
-    private final int defaultHeight = 4;
+    private final int defaultHeight = 5;
 
     /**
      * Creates an array of dimensions: n x m, and
@@ -164,12 +164,10 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     public Board<DomineeringMove> play(DomineeringMove move) {
         Player player = nextPlayer();
 
-        Player[][] boardCopy = new Player[this.board.length][this.board[0].length];
+        Player[][] boardCopy = new Player[this.board.length][];
 
         for(int i = 0; i < this.board.length; i++) {
-            for(int j = 0; j < this.board[i].length; j++) {
-                boardCopy[i][j] = this.board[i][j];
-            }
+            boardCopy[i] = this.board[i].clone();
         }
 
         switch(player) {

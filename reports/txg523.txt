@@ -15,10 +15,10 @@ Running unit tests (part 1)...
 =================================================================
 JUnit version 4.12
 .E.E
-Time: 0.081
+Time: 0.069
 There were 2 failures:
 1) heightShouldMatchSolution(TestsDomineeringClean)
-java.lang.AssertionError: Unexpected error in property heightShouldMatchSolution with args [4, 2]
+java.lang.AssertionError: Unexpected error in property heightShouldMatchSolution with args [3, 0]
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.reportErrorWithArguments(PropertyVerifier.java:103)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.access$300(PropertyVerifier.java:40)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:80)
@@ -46,7 +46,7 @@ java.lang.AssertionError: Unexpected error in property heightShouldMatchSolution
 	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
 	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:77)
 	at org.junit.runner.JUnitCore.main(JUnitCore.java:36)
-Caused by: java.lang.ArrayIndexOutOfBoundsException: 2
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
 	at DomineeringBoard.availableMoves(DomineeringBoard.java:130)
 	at Board.tree(Board.java:26)
 	at TestsDomineeringClean.init(TestsDomineeringClean.java:45)
@@ -62,7 +62,7 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: 2
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:73)
 	... 24 more
 2) sizeShouldMatchSolution(TestsDomineeringClean)
-java.lang.AssertionError: Unexpected error in property sizeShouldMatchSolution with args [3, 0]
+java.lang.AssertionError: Unexpected error in property sizeShouldMatchSolution with args [2, 1]
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.reportErrorWithArguments(PropertyVerifier.java:103)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.access$300(PropertyVerifier.java:40)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:80)
