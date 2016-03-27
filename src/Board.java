@@ -37,11 +37,11 @@ public abstract class Board<Move> {
     LinkedHashMap<Move,GameTree<Move>> children 
                  = new LinkedHashMap<Move,GameTree<Move>>(); 
     
-    Set<Move> curAvailMoves = availableMoves();
-    for (Move m : curAvailMoves) {
+    for (Move m : availableMoves()) {
       GameTree<Move> subtree = play(m).tree();
       children.put(m,subtree);
       optimalOutcome = Math.max(optimalOutcome,subtree.optimalOutcome());
+      
     }
     
     return new GameTree<Move>(this,children,optimalOutcome); 
@@ -52,12 +52,14 @@ public abstract class Board<Move> {
 
     int optimalOutcome = Integer.MAX_VALUE;
     LinkedHashMap<Move,GameTree<Move>> children 
-                 = new LinkedHashMap<Move,GameTree<Move>>(); 
+                 = new LinkedHashMap<Move,GameTree<Move>>();
+    
 
     for (Move m : availableMoves()) {
       GameTree<Move> subtree = play(m).tree();
       children.put(m,subtree);
       optimalOutcome = Math.min(optimalOutcome,subtree.optimalOutcome());
+      
     }
 
     return new GameTree<Move>(this,children,optimalOutcome);

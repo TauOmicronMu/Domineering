@@ -17,7 +17,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 
     private final int defaultWidth = 4;
     private final int defaultHeight = 5;
-
+    
     /**
      * Creates an array of dimensions: n x m, and
      * populates each element with null.
@@ -44,7 +44,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
      * The movesPlayed is set to 0.
      */
     public DomineeringBoard () {
-        this.board = createBoard(this.defaultWidth, this.defaultHeight);
+        this.board = createBoard(this.defaultHeight, this.defaultWidth);
         this.movesPlayed = 0;
     }
 
@@ -99,15 +99,15 @@ public class DomineeringBoard extends Board<DomineeringMove> {
      *
      * @return A set containing all legal moves that the current player can play.
      *
-     * Maximiser (V) :
+     * Maximiser (H) :
      * ---------------
-     * For the vertical player, start on the 2nd (i = 1) row, and
+     * For the horizontal player, start on the 2nd (i = 1) row, and
      * check all pairs of cells: (i, j), (i-1, j) to see if
      * they are both empty. If they are, add them to the set.
      *
-     * Minimiser (H) :
+     * Minimiser (V) :
      * ---------------
-     * For the horizontal player, start on the (n-1)th column, and
+     * For the vertical player, start on the (n-1)th column, and
      * check all pairs of cells: (i, j), (i, j+1) to see if
      * they are both empty. If they are, add them to the set.
      */
@@ -115,6 +115,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
         Player player = nextPlayer();
         ArrayList<DomineeringMove> moves = new ArrayList<>();
         switch(player) {
+        
             case MAXIMIZER:
                 for(int i = 1; i < this.board.length; i++) {
                     for (int j = 0; j < this.board[i].length; j++) {
@@ -126,7 +127,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
                 break;
             case MINIMIZER:
                 for(int i = 0; i < this.board.length; i++) {
-                    for(int j = (this.board.length - 2); j >= 0; j--) {
+                    for(int j = (this.board[i].length - 2); j >= 0; j--) {
                         if(this.board[i][j] == null && this.board[i][j+1] == null) {
                             moves.add(new DomineeringMove(i, j, player));
                         }
@@ -195,7 +196,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
         String s = "";
         s += "\n";
         s += "-";
-        for(int j = 0; j < this.board.length; j++) s += "----";
+
+        for(int j = 0; j < this.board[0].length; j++) s += "----";
         s += "\n";
         for(int i = 0; i < this.board.length; i++) {
             s += "|";
@@ -206,7 +208,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
                 s += " " + "|";
             }
             s += "\n";
-            for(int j = 0; j < this.board.length; j++) s += "----";
+            for(int j = 0; j < this.board[0].length; j++) s += "----";
             s += "-";
             s += "\n";
         }
