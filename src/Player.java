@@ -1,3 +1,3 @@
 public enum Player {
-  MAXIMIZER, MINIMIZER, EMPTY
+  MAXIMIZER, MINIMIZER
 }

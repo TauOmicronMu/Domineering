@@ -20,7 +20,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 
     /**
      * Creates an array of dimensions: n x m, and
-     * populates each element with Player.EMPTY.
+     * populates each element with null.
      *
      * @param m The width of the desired board.
      * @param n The height of the desired board.
@@ -30,7 +30,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
         Player[][] board = new Player[m][n];
         for(int i = 0; i < board.length; i++) {
             for(int j = 0; j < board[i].length; j++) {
-                board[i][j] = Player.EMPTY;
+                board[i][j] = null;
             }
         }
         return board;
@@ -40,7 +40,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
      * Returns a new instance of DomineeringBoard with dimensions
      * defaultWidth x defaultHeight.
      *
-     * The board is initially populated with Player.EMPTY.
+     * The board is initially populated with null.
      * The movesPlayed is set to 0.
      */
     public DomineeringBoard () {
@@ -52,7 +52,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
      * Returns a new instance of DomineeringBoard with dimensions
      * n x m.
      *
-     * The board is initially populated with Player.EMPTY.
+     * The board is initially populated with null.
      * The movesPlayed is set to 0.
      *
      * @param m The width of the desired board.
@@ -118,7 +118,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
             case MAXIMIZER:
                 for(int i = 1; i < this.board.length; i++) {
                     for (int j = 0; j < this.board[i].length; j++) {
-                        if(this.board[i][j].equals(Player.EMPTY) && this.board[i-1][j].equals(Player.EMPTY)) {
+                        if(this.board[i][j] == null && this.board[i-1][j] == null) {
                             moves.add(new DomineeringMove(i, j, player));
                         }
                     }
@@ -127,7 +127,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
             case MINIMIZER:
                 for(int i = 0; i < this.board.length; i++) {
                     for(int j = (this.board.length - 2); j >= 0; j--) {
-                        if(this.board[i][j].equals(Player.EMPTY) && this.board[i][j+1].equals(Player.EMPTY)) {
+                        if(this.board[i][j] == null && this.board[i][j+1] == null) {
                             moves.add(new DomineeringMove(i, j, player));
                         }
                     }
@@ -203,7 +203,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
             s += "|";
             for(int j = 0; j < this.board[i].length; j++) {
                 s += " ";
-                s += (this.board[i][j]).equals(Player.EMPTY) ? " " :
+                s += (this.board[i][j]) == null ? " " :
                         (this.board[i][j].equals(Player.MAXIMIZER) ? "X" : "O");
                 s += " " + "|";
             }
