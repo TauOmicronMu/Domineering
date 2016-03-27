@@ -1,5 +1,3 @@
-import com.sun.media.jfxmedia.events.PlayerEvent;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -208,7 +206,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
                 s += " " + "|";
             }
             s += "\n";
-            for(int j = 0; j < this.board[0].length; j++) s += "----";
+            for(int j = 0; j < this.board[i].length; j++) s += "----";
             s += "-";
             s += "\n";
         }
