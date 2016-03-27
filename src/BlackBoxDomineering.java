@@ -5,6 +5,12 @@ import java.util.Scanner;
  */
 public class BlackBoxDomineering {
 
+    static String firstOrSecond;
+    static String vertOrHoriz;
+    static int m;
+    static int n;
+    static Scanner scanner = new Scanner(System.in);
+
     /**
      - It takes EXACTLY four command line arguments (and you should
      have an assertion for the number of command line arguments).
@@ -63,21 +69,21 @@ public class BlackBoxDomineering {
     private static class CommandLineDom implements MoveChannel<DomineeringMove> {
 
         public DomineeringMove getMove() {
-            Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
             String[] splitInput = input.split(",");
-            if(splitInput.length != 2) {
-                System.err.println("Your input was wrong!");
-                System.exit(1);
-            }
 
             int x = Integer.parseInt(splitInput[0]);
-
             int y = Integer.parseInt(splitInput[1]);
 
-            DomineeringMove move = new DomineeringMove(y, x, Player.MAXIMIZER);
-
-            return move;
+            switch(vertOrHoriz) {
+                case "vertical" :
+                    return new DomineeringMove(x, y, Player.MAXIMIZER);
+                case "horizontal" :
+                    return new DomineeringMove(x, y, Player.MAXIMIZER);
+                default :
+                    System.err.println("RETURNED A NULL MOVE - WAS GIVEN NEITHER VERTICAL NOR HORIZONTAL.");
+                    return null;
+            }
         }
 
         public void giveMove(DomineeringMove move) {
@@ -97,13 +103,17 @@ public class BlackBoxDomineering {
 
         assert(args.length == 4);
 
-        String firstOrSecond = args[0];
-        String vertOrHoriz = args[1];
-        int m = Integer.parseInt(args[2]);
-        int n = Integer.parseInt(args[3]);
+        firstOrSecond = args[0];
+        vertOrHoriz = args[1];
+        m = Integer.parseInt(args[2]);
+        n = Integer.parseInt(args[3]);
 
         DomineeringBoard board = new DomineeringBoard(m,n);
 
+        board.tree().firstPlayer(new CommandLineDom());
+        board.tree().secondPlayer(new CommandLineDom());
+
+        /*
         switch(firstOrSecond) {
             case "first" :
                 board.tree().firstPlayer(new CommandLineDom());
@@ -115,5 +125,6 @@ public class BlackBoxDomineering {
                 System.err.println("1st arg was wrong!");
                 System.exit(1);
         }
+        */
     }
 }
