@@ -13,8 +13,8 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     private final Player[][] board;
     private final int movesPlayed;
 
-    private final int defaultWidth = 4;
-    private final int defaultHeight = 4;
+    private final int defaultWidth = 3;
+    private final int defaultHeight = 3;
     
     /**
      * Creates an array of dimensions: n x m, and
@@ -25,7 +25,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
      * @return A populated array of dimensions n x m.
      */
     static Player[][] createBoard(int m, int n) {
-        Player[][] board = new Player[m][n];
+        Player[][] board = new Player[n][m];
         for(int i = 0; i < board.length; i++) {
             for(int j = 0; j < board[i].length; j++) {
                 board[i][j] = null;
