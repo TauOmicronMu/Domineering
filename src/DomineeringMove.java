@@ -31,6 +31,6 @@ public class DomineeringMove {
     }
 
     public String toString() {
-        return "(" + y + "," + x + ")" + " : " + player.name();
+        return "(" + y + "," + x + ")";
     }
 }

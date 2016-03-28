@@ -14,7 +14,7 @@ public class DomineeringBoard extends Board<DomineeringMove> {
     private final int movesPlayed;
 
     private final int defaultWidth = 4;
-    private final int defaultHeight = 5;
+    private final int defaultHeight = 4;
     
     /**
      * Creates an array of dimensions: n x m, and
@@ -99,34 +99,34 @@ public class DomineeringBoard extends Board<DomineeringMove> {
      *
      * Maximiser (H) :
      * ---------------
-     * For the horizontal player, start on the 2nd (i = 1) row, and
-     * check all pairs of cells: (i, j), (i-1, j) to see if
-     * they are both empty. If they are, add them to the set.
+     * For the horizontal player, start on the ((board[i].length) - 2)th
+     * row, and check all combinations of (i, j), (i, j+1) to
+     * see if they are both empty. If they are, add them to the set.
      *
      * Minimiser (V) :
      * ---------------
-     * For the vertical player, start on the (n-1)th column, and
-     * check all pairs of cells: (i, j), (i, j+1) to see if
+     * For the vertical player, start on the 1st row, and
+     * check all pairs of cells: (i, j), (i+1, j) to see if
      * they are both empty. If they are, add them to the set.
      */
     public Set<DomineeringMove> availableMoves() {
         Player player = nextPlayer();
         ArrayList<DomineeringMove> moves = new ArrayList<>();
         switch(player) {
-        
-            case MAXIMIZER:
-                for(int i = 1; i < this.board.length; i++) {
-                    for (int j = 0; j < this.board[i].length; j++) {
-                        if(this.board[i][j] == null && this.board[i-1][j] == null) {
+
+            case MINIMIZER: /* (H) */
+                for(int i = 0; i < this.board.length; i++) {
+                    for (int j = this.board[i].length - 2; j >=0 ; j--) {
+                        if(this.board[i][j] == null && this.board[i][j+1] == null) {
                             moves.add(new DomineeringMove(i, j, player));
                         }
                     }
                 }
                 break;
-            case MINIMIZER:
-                for(int i = 0; i < this.board.length; i++) {
-                    for(int j = (this.board[i].length - 2); j >= 0; j--) {
-                        if(this.board[i][j] == null && this.board[i][j+1] == null) {
+            case MAXIMIZER: /* (V) */
+                for(int i = 0; i < this.board.length - 1; i++) {
+                    for(int j = 0; j < this.board[i].length; j++) {
+                        if(this.board[i][j] == null && this.board[i+1][j] == null) {
                             moves.add(new DomineeringMove(i, j, player));
                         }
                     }
@@ -171,12 +171,12 @@ public class DomineeringBoard extends Board<DomineeringMove> {
 
         switch(player) {
             case MAXIMIZER:
-                boardCopy[move.x][move.y] = V;
-                boardCopy[move.x-1][move.y] = V;
+                boardCopy[move.x][move.y] = H;
+                boardCopy[move.x+1][move.y] = H;
                 break;
             case MINIMIZER:
-                boardCopy[move.x][move.y] = H;
-                boardCopy[move.x][move.y+1] = H;
+                boardCopy[move.x][move.y] = V;
+                boardCopy[move.x][move.y+1] = V;
                 break;
         }
 
