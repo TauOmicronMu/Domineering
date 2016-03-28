@@ -14,17 +14,112 @@ Compiling unit tests...
 Running unit tests (part 1)...
 =================================================================
 JUnit version 4.12
+<<<<<<< HEAD
 ..
 Time: 5.266
 
 OK (2 tests)
+=======
+.E.E
+Time: 0.224
+There were 2 failures:
+1) heightShouldMatchSolution(TestsDomineeringClean)
+java.lang.AssertionError: Property heightShouldMatchSolution falsified for args shrunken to [1, 2]
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.internal.ComparisonCriteria.assertArraysAreSameLength(ComparisonCriteria.java:76)
+	at org.junit.internal.ComparisonCriteria.arrayEquals(ComparisonCriteria.java:37)
+	at org.junit.Assert.internalArrayEquals(Assert.java:532)
+	at org.junit.Assert.assertArrayEquals(Assert.java:283)
+	at org.junit.Assert.assertArrayEquals(Assert.java:298)
+	at TestsDomineeringClean.assertion(TestsDomineeringClean.java:54)
+	at TestsDomineeringClean.heightShouldMatchSolution(TestsDomineeringClean.java:73)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at com.pholser.junit.quickcheck.runner.PropertyVerifier$2.evaluate(PropertyVerifier.java:96)
+	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:73)
+	at com.pholser.junit.quickcheck.runner.PropertyVerifier.verify(PropertyVerifier.java:65)
+	at com.pholser.junit.quickcheck.runner.PropertyStatement.verifyProperty(PropertyStatement.java:106)
+	at com.pholser.junit.quickcheck.runner.PropertyStatement.evaluate(PropertyStatement.java:92)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:77)
+	at org.junit.runner.JUnitCore.main(JUnitCore.java:36)
+2) sizeShouldMatchSolution(TestsDomineeringClean)
+java.lang.AssertionError: Property sizeShouldMatchSolution falsified for args shrunken to [2, 1]
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.internal.ComparisonCriteria.assertArraysAreSameLength(ComparisonCriteria.java:76)
+	at org.junit.internal.ComparisonCriteria.arrayEquals(ComparisonCriteria.java:37)
+	at org.junit.Assert.internalArrayEquals(Assert.java:532)
+	at org.junit.Assert.assertArrayEquals(Assert.java:283)
+	at org.junit.Assert.assertArrayEquals(Assert.java:298)
+	at TestsDomineeringClean.assertion(TestsDomineeringClean.java:54)
+	at TestsDomineeringClean.sizeShouldMatchSolution(TestsDomineeringClean.java:91)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at com.pholser.junit.quickcheck.runner.PropertyVerifier$2.evaluate(PropertyVerifier.java:96)
+	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:73)
+	at com.pholser.junit.quickcheck.runner.PropertyVerifier.verify(PropertyVerifier.java:65)
+	at com.pholser.junit.quickcheck.runner.PropertyStatement.verifyProperty(PropertyStatement.java:106)
+	at com.pholser.junit.quickcheck.runner.PropertyStatement.evaluate(PropertyStatement.java:92)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:77)
+	at org.junit.runner.JUnitCore.main(JUnitCore.java:36)
+
+FAILURES!!!
+Tests run: 2,  Failures: 2
+>>>>>>> a8ea7e40dbcf6b3366725c78568738284e99b64b
 
 =================================================================
 
 Testing BlackBoxDomineering against a random player...
 =================================================================
 Student plays first horizontal against BlackBox2 on a 0x0 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox2 on a 0x0 board
 Both players exited, and it was player 1's turn. So player 2 won!
@@ -67,7 +162,12 @@ Student plays first horizontal against BlackBox3 on a 4x4 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays second vertical against BlackBox3 on a 4x4 board
+<<<<<<< HEAD
 Both players exited, and it was player 1's turn. So player 2 won!
+=======
+> 0,1
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
+>>>>>>> a8ea7e40dbcf6b3366725c78568738284e99b64b
 
 Student plays first horizontal against BlackBox3 on a 4x5 board
 Both players exited, and it was player 1's turn. So player 2 won!
@@ -79,13 +179,23 @@ Student plays first horizontal against BlackBox3 on a 5x5 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays second vertical against BlackBox3 on a 5x5 board
+<<<<<<< HEAD
 Both players exited, and it was player 1's turn. So player 2 won!
+=======
+> 0,3
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
+>>>>>>> a8ea7e40dbcf6b3366725c78568738284e99b64b
 
 Student plays first horizontal against BlackBox3 on a 6x5 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays second vertical against BlackBox3 on a 6x5 board
+<<<<<<< HEAD
 Both players exited, and it was player 1's turn. So player 2 won!
+=======
+> 4,2
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
+>>>>>>> a8ea7e40dbcf6b3366725c78568738284e99b64b
 
 Student plays first horizontal against BlackBox3 on a 6x6 board
 Both players exited, and it was player 1's turn. So player 2 won!
@@ -94,19 +204,34 @@ Student plays first horizontal against BlackBox3 on a 7x6 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays second vertical against BlackBox3 on a 7x6 board
+<<<<<<< HEAD
 Both players exited, and it was player 1's turn. So player 2 won!
+=======
+> 5,3
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
+>>>>>>> a8ea7e40dbcf6b3366725c78568738284e99b64b
 
 Student plays first horizontal against BlackBox3 on a 7x7 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays second vertical against BlackBox3 on a 7x7 board
+<<<<<<< HEAD
 Both players exited, and it was player 1's turn. So player 2 won!
+=======
+> 0,4
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
+>>>>>>> a8ea7e40dbcf6b3366725c78568738284e99b64b
 
 Student plays first horizontal against BlackBox3 on a 8x8 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays second vertical against BlackBox3 on a 8x8 board
+<<<<<<< HEAD
 Both players exited, and it was player 1's turn. So player 2 won!
+=======
+> 6,1
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
+>>>>>>> a8ea7e40dbcf6b3366725c78568738284e99b64b
 
 =================================================================
 
