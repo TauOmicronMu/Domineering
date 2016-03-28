@@ -15,10 +15,10 @@ Running unit tests (part 1)...
 =================================================================
 JUnit version 4.12
 .E.E
-Time: 4.66
+Time: 0.224
 There were 2 failures:
 1) heightShouldMatchSolution(TestsDomineeringClean)
-java.lang.AssertionError: Property heightShouldMatchSolution falsified for args shrunken to [2, 1]
+java.lang.AssertionError: Property heightShouldMatchSolution falsified for args shrunken to [1, 2]
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.internal.ComparisonCriteria.assertArraysAreSameLength(ComparisonCriteria.java:76)
 	at org.junit.internal.ComparisonCriteria.arrayEquals(ComparisonCriteria.java:37)
@@ -112,7 +112,7 @@ Tests run: 2,  Failures: 2
 Testing BlackBoxDomineering against a random player...
 =================================================================
 Student plays first horizontal against BlackBox2 on a 0x0 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox2 on a 0x0 board
 Both players exited, and it was player 1's turn. So player 2 won!
@@ -158,7 +158,7 @@ Student plays first horizontal against BlackBox3 on a 4x4 board
 ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 4x4 board
-> 2,1
+> 0,1
 ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 4x5 board
@@ -172,14 +172,14 @@ Student plays first horizontal against BlackBox3 on a 5x5 board
 ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 5x5 board
-> 3,2
+> 0,3
 ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 6x5 board
 ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 6x5 board
-> 0,3
+> 4,2
 ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 6x6 board
@@ -189,21 +189,21 @@ Student plays first horizontal against BlackBox3 on a 7x6 board
 ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 7x6 board
-> 5,1
+> 5,3
 ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 7x7 board
 ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 7x7 board
-> 0,2
+> 0,4
 ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 8x8 board
 ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 8x8 board
-> 0,5
+> 6,1
 ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 =================================================================
