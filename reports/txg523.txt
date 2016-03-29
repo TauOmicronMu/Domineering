@@ -15,7 +15,7 @@ Running unit tests (part 1)...
 =================================================================
 JUnit version 4.12
 ..
-Time: 6.052
+Time: 9.224
 
 OK (2 tests)
 
@@ -33,80 +33,111 @@ Student plays first horizontal against BlackBox2 on a 1x1 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays first horizontal against BlackBox2 on a 2x1 board
-ERROR: Player 1 timed out!
+> 0,0
+Both players exited, and it was player 2's turn. So player 1 won!
 
 Student plays first horizontal against BlackBox2 on a 1x2 board
 Both players exited, and it was player 1's turn. So player 2 won!
 
 Student plays first horizontal against BlackBox2 on a 3x3 board
-ERROR: Player 1 timed out!
+> 1,1
+< 0,0
+> 0,1
+Both players exited, and it was player 2's turn. So player 1 won!
 
 Student plays first horizontal against BlackBox2 on a 4x3 board
-ERROR: Player 1 timed out!
+> 0,2
+< 3,0
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox2 on a 4x3 board
+> 2,1
+< 0,0
+> 0,2
+< 0,1
 ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays first horizontal against BlackBox2 on a 3x4 board
-ERROR: Player 1 timed out!
+> 0,1
+< 0,2
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox2 on a 3x4 board
-ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
+> 1,0
+< 2,1
+> 0,2
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox2 on a 4x4 board
-ERROR: Player 1 timed out!
+> 0,1
+< 2,2
+> 2,0
+< 1,2
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox2 on a 4x4 board
-ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
+> 1,0
+< 2,1
+> 0,1
+< 1,2
+> 2,3
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 =================================================================
 
 Testing BlackBoxDomineering2 against a heuristic player...
 =================================================================
 Student plays first horizontal against BlackBox3 on a 4x4 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 4x4 board
-Both players exited, and it was player 1's turn. So player 2 won!
+> 2,2
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 4x5 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 4x5 board
-Both players exited, and it was player 1's turn. So player 2 won!
+> 0,2
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 5x5 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 5x5 board
-Both players exited, and it was player 1's turn. So player 2 won!
+> 0,1
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 6x5 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 6x5 board
-Both players exited, and it was player 1's turn. So player 2 won!
+> 0,3
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 6x6 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 7x6 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 7x6 board
-Both players exited, and it was player 1's turn. So player 2 won!
+> 0,4
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 7x7 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 7x7 board
-Both players exited, and it was player 1's turn. So player 2 won!
+> 5,3
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 Student plays first horizontal against BlackBox3 on a 8x8 board
-Both players exited, and it was player 1's turn. So player 2 won!
+ERROR: Player 2 is awaiting a move by player 1, but player 1 exited. Did player 1 exit early or did 2 not realize a winning position?
 
 Student plays second vertical against BlackBox3 on a 8x8 board
-Both players exited, and it was player 1's turn. So player 2 won!
+> 6,6
+ERROR: Player 1 is awaiting a move by player 2, but player 2 exited. Did player 2 exit early or did 1 not realize a winning position?
 
 =================================================================
 
