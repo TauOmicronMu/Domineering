@@ -89,7 +89,7 @@ public class BlackBoxDomineering {
         }
 
         public void giveMove(DomineeringMove move) {
-            System.out.println(move.x + "," + move.y);
+            System.out.println(move.x + "," + move.y + "\n");
             System.out.flush();
         }
 
